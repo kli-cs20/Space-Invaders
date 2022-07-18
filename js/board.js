@@ -23,7 +23,7 @@ createDivGrid(grid);
 function createGridArray() {
     // Create and return a grid array
     return [ [0, 2, 2, 3, 3, 3, 2, 2, 0],
-             [0, 0, 4, 4, 4, 4, 4, 0, 0],
+             [0, 0, 3, 4, 4, 4, 3, 0, 0],
              [0, 0, 0, 2, 2, 2, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -50,13 +50,13 @@ function createDivGrid(grid) {
 
             // Add appropriate class to each div element
             if (grid[row][col] === 1) {
-                divEl.classList.add("player");
+                divEl.className = "player";
             } else if (grid[row][col] === 2) {
-                divEl.classList.add("pink");
+                divEl.className = "pink";
             } else if (grid[row][col] === 3) {
-                divEl.classList.add("purple");
+                divEl.className = "purple";
             } else if (grid[row][col] === 4) {
-                divEl.classList.add("orange");
+                divEl.className = "orange";
             }
 
             // Add dataset values for row and col
