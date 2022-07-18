@@ -1,27 +1,49 @@
 // Function Collection
 
 function moveInvaders() {
-    moveForward();
-
-    if (count === 5) {
-        grid[1] = [0, 0, 0, 4, 3, 4, 0, 0, 0];
-    } else if (count === 6) {
-        grid[1] = [0, 0, 2, 2, 0, 2, 2, 0, 0];
-    } else if (count === 7) {
-        grid[1] = [0, 4, 2, 3, 4, 3, 2, 4, 0];
+    if (direction === "left") {
+        if (leftCol === 1) {
+            moveForward();
+            direction = "right";
+        } else {
+            shiftLeft();
+        }
+    } else if (direction === "right") {
+        if (rightCol === 7) {
+            moveForward();
+            direction = "left";
+        } else {
+            shiftRight();
+        }
     }
+
+    // if (count === 5) {
+    //     grid[1] = [0, 0, 0, 4, 3, 4, 0, 0, 0];
+    // } else if (count === 6) {
+    //     grid[1] = [0, 0, 2, 2, 0, 2, 2, 0, 0];
+    // } else if (count === 7) {
+    //     grid[1] = [0, 4, 2, 3, 4, 3, 2, 4, 0];
+    // }
 }
 
-function shiftRight(i) {
-    for (let col = NUM_COLS; col >= 0; col--) {
-        grid[i][col + 1] = grid[i][col];
+function shiftRight() {
+    for (let row = 0; row < NUM_ROWS - 1; row++) {
+        for (let col = NUM_COLS; col >= 0; col--) {
+            grid[row][col + 1] = grid[row][col];
+        }
     }
+    leftCol++;
+    rightCol++;
 }
 
-function shiftLeft(i) {
-    for (let col = 0; col < NUM_COLS; col++) {
-        grid[i][col - 1] = grid[i][col];
+function shiftLeft() {
+    for (let row = 0; row < NUM_ROWS - 1; row++) {
+        for (let col = 0; col < NUM_COLS; col++) {
+            grid[row][col - 1] = grid[row][col];
+        }
     }
+    leftCol--;
+    rightCol--;
 }
 
 function moveForward() {
