@@ -1,0 +1,37 @@
+html {
+    text-align: center;
+    background: black;
+}
+
+h1 {
+    color: white;
+}
+
+#gameboard {
+    width: 450px;
+    margin: auto;
+}
+
+#gameboard div {
+    width: 44px;
+    height: 44px;
+    border: 3px solid black;
+    float: left;
+    border-radius: 50%;
+}
+
+.player {
+    background-color: green;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.orange {
+    background-color: orange;
+}
