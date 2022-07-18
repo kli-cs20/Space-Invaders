@@ -1,20 +1,35 @@
 // Function Collection
 
 function moveInvaders() {
-    shiftRight();
+    moveForward();
+
+    if (count === 5) {
+        grid[1] = [0, 0, 0, 4, 3, 4, 0, 0, 0];
+    } else if (count === 6) {
+        grid[1] = [0, 0, 2, 2, 0, 2, 2, 0, 0];
+    } else if (count === 7) {
+        grid[1] = [0, 4, 2, 3, 4, 3, 2, 4, 0];
+    }
 }
 
-function shiftRight() {
-    for (let col = NUM_COLS - 2; col >= 0; col--) {
-        grid[0][col + 1] = grid[0][col];
+function shiftRight(i) {
+    for (let col = NUM_COLS; col >= 0; col--) {
+        grid[i][col + 1] = grid[i][col];
     }
+}
 
-    for (let col = NUM_COLS - 2; col >= 0; col--) {
-        grid[1][col + 1] = grid[1][col];
+function shiftLeft(i) {
+    for (let col = 0; col < NUM_COLS; col++) {
+        grid[i][col - 1] = grid[i][col];
     }
-    
-    for (let col = NUM_COLS - 2; col >= 0; col--) {
-        grid[2][col + 1] = grid[2][col];
+}
+
+function moveForward() {
+    for (let col = 0; col < NUM_COLS; col++) {
+        for (let row = NUM_ROWS - 3; row >= 0; row--) {
+            grid[row + 1][col] = grid[row][col];
+
+        }
     }
 }
 
@@ -25,7 +40,9 @@ function updateGrid() {
             let thisBox = grid[row][col];
             let cellId = "cell" + row + "-" + col;
             let thisId = document.getElementById(cellId);
-            if (thisBox === 1) {
+            if (thisBox === 0) {
+                thisId.className = "";
+            } else if (thisBox === 1) {
                 thisId.className = "player";
             } else if (thisBox === 2) {
                 thisId.className = "pink";
