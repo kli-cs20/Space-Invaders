@@ -69,24 +69,43 @@ function updateGrid() {
     }
 }
 
-document.addEventListener("keydown", keydownHandler);
-document.addEventListener("keyup", keyupHandler);
-let leftArrowPressed = "false" 
-let rightArrowPressed = "false";
+document.addEventListener("keydown", movePlayer);
 
-function keydownHandler(e) {
-    if (e.keyCode === 37) {
-        leftArrowPressed = "true";
-    } else if (e.keyCode === 39) {
-        rightArrowPressed = "true";
+function movePlayer(e) {
+    if (e.keyCode === 39) { // Right arrow key
+        updatePlayer(player.row, player.col + 1);
+    } else if (e.keyCode === 37) { // Left arrow key
+        updatePlayer(player.row, player.col - 1);
     }
 }
 
-function keyupHandler(e) {
-    if (e.keyCode === 37) {
-        leftArrowPressed = "false";
-    } else if (e.keyCode === 39) {
-        rightArrowPressed = "false";
+
+function updatePlayer(newRow, newCol) {
+    // Wrap-Around Movement preventing col of -1
+    if (newCol === -1) {
+        newCol = 12
+    } else if (newCol === 13) {
+        newCol = 0;
     }
+
+    // Remove player class from current location
+    let cellId = "cell8" + "-" + player.col;
+    document.getElementById(cellId).className = "";
+
+    // Set grid array to 0 for current location
+    grid[player.row][player.col] = 0;
+
+    // Update player location
+    player.row = newRow;
+    player.col = newCol;
+            
+    // Update class and grid
+    cellId = "cell8" + "-" + player.col;
+
+    document.getElementById(cellId).className = "player";
+
+    grid[player.row][player.col] = 1;
 }
+
+
 
