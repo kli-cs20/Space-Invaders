@@ -136,6 +136,7 @@ function drawBullets() {
 
 function moveBullets() {
     for (let i = 0; i < bullets.length; i++) {
+
         // Clear previous space
         let thisBullet = bullets[i];
         let cellId = "cell" + thisBullet.row + "-" + thisBullet.col;
@@ -143,8 +144,9 @@ function moveBullets() {
 
         // Update row #
         bullets[i].row = bullets[i].row - 1;
-
+        
         bulletCollisions()
+
 
         cellId = "cell" + thisBullet.row + "-" + thisBullet.col;
         document.getElementById(cellId).className = "bullet";
@@ -160,11 +162,14 @@ function bulletCollisions() {
             bullets.splice(bullets.indexOf(thisBullet), 1);
         }
 
-        if (enemyArray.includes({row: 3, col: 6})) {
-            console.log("true")
-        } else {
-            console.log("false")
+        for (let i = 0; i < enemyArray.length; i++) {
+            let thisInvader = JSON.stringify(enemyArray[i]);
+            let theBullet = JSON.stringify(thisBullet);
+            if (thisInvader === theBullet) {
+                console.log("true")
+            }
         }
+        
     }
 }
 
