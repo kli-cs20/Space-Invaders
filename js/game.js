@@ -7,9 +7,10 @@ let direction = "right";
 
 
 // Enemy Portion
-setInterval(invaders, 1000);
-
+// setInterval(invaders, 2000);
 let count = 0;
+invaders();
+
 function invaders() {
     moveInvaders();
 
@@ -19,12 +20,11 @@ function invaders() {
 }
 
 // Player Movement + Shooting
-setInterval(playGame, 250)
+setInterval(playGame, 250);
 
 function playGame() {
-
-
-    updateGrid();
+    drawBullets();
+    moveBullets();
 
 }
 

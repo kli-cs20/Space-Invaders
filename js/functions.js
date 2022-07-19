@@ -76,6 +76,8 @@ function movePlayer(e) {
         updatePlayer(player.row, player.col + 1);
     } else if (e.keyCode === 37) { // Left arrow key
         updatePlayer(player.row, player.col - 1);
+    } else if (e.keyCode === 32) {
+        createBullet(player.col);
     }
 }
 
@@ -105,6 +107,27 @@ function updatePlayer(newRow, newCol) {
     document.getElementById(cellId).className = "player";
 
     grid[player.row][player.col] = 1;
+}
+
+let bullets = [];
+
+function createBullet(setCol) {
+    bullets.push({row: 7, col: setCol});
+}
+
+function drawBullets() {
+    for (let i = 0; i < bullets.length; i++) {
+        let thisBullet = bullets[i];
+        let cellId = "cell" + thisBullet.row + "-" + thisBullet.col
+
+        document.getElementById(cellId).className = "bullet";
+    }
+}
+
+function moveBullets() {
+    for (let i = 0; i < bullets.length; i++) {
+        bullets[i].row = bullets[i].row - 1;
+    }
 }
 
 
