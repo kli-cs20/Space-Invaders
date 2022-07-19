@@ -110,7 +110,7 @@ function updatePlayer(newRow, newCol) {
 let bullets = [];
 
 function createBullet(setCol) {
-    bullets.push({row: 7, col: setCol});
+    bullets.push({row: 8, col: setCol});
 }
 
 function drawBullets() {
@@ -124,7 +124,7 @@ function drawBullets() {
 
 function moveBullets() {
     for (let i = 0; i < bullets.length; i++) {
-        
+
         // Clear previous space
         let thisBullet = bullets[i];
         let cellId = "cell" + thisBullet.row + "-" + thisBullet.col
@@ -135,6 +135,15 @@ function moveBullets() {
 
         cellId = "cell" + thisBullet.row + "-" + thisBullet.col
         document.getElementById(cellId).className = "bullet";
+    }
+}
+
+function bulletCollisions() {
+    for (let i = 0; i < bullets.length; i++) {
+        let thisBullet = bullets[i];
+        if (thisBullet.row < 0) {
+            bullets.splice(bullets.indexOf(thisBullet), 1);
+        }
     }
 }
 
