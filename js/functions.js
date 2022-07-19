@@ -103,9 +103,7 @@ function updatePlayer(newRow, newCol) {
             
     // Update class and grid
     cellId = "cell8" + "-" + player.col;
-
     document.getElementById(cellId).className = "player";
-
     grid[player.row][player.col] = 1;
 }
 
@@ -126,7 +124,17 @@ function drawBullets() {
 
 function moveBullets() {
     for (let i = 0; i < bullets.length; i++) {
+        
+        // Clear previous space
+        let thisBullet = bullets[i];
+        let cellId = "cell" + thisBullet.row + "-" + thisBullet.col
+        document.getElementById(cellId).className = "";
+
+        // Update row #
         bullets[i].row = bullets[i].row - 1;
+
+        cellId = "cell" + thisBullet.row + "-" + thisBullet.col
+        document.getElementById(cellId).className = "bullet";
     }
 }
 

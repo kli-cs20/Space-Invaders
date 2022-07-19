@@ -23,8 +23,9 @@ function invaders() {
 setInterval(playGame, 250);
 
 function playGame() {
-    drawBullets();
     moveBullets();
+
+    drawBullets();
 
 }
 
