@@ -3,7 +3,7 @@
 // Global Variables
 let leftCol = 2;
 let rightCol = 10;
-let frontRow = 3;
+let enemyArray = [];
 let direction = "right";
 
 
@@ -16,15 +16,15 @@ function invaders() {
     moveInvaders();
 
     updateGrid();
+    recordInvaders();
     
     count++
 }
 
 // Player Movement + Shooting
-setInterval(playGame, 250);
+setInterval(playGame, 1000);
 
 function playGame() {
-    bulletCollisions();
 
     moveBullets();
 

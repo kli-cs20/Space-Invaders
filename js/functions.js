@@ -70,6 +70,17 @@ function updateGrid() {
     }
 }
 
+function recordInvaders() {
+    for (let r = 0; r < NUM_ROWS - 1; r++) {
+        for (let c = 0; c < NUM_COLS; c++) {
+            let thisBox = grid[r][c];
+            if (thisBox !== 0) {
+                enemyArray.push({row: r, col: c});
+            }
+        }
+    }
+}
+
 document.addEventListener("keydown", movePlayer);
 
 function movePlayer(e) {
@@ -125,16 +136,17 @@ function drawBullets() {
 
 function moveBullets() {
     for (let i = 0; i < bullets.length; i++) {
-
         // Clear previous space
         let thisBullet = bullets[i];
-        let cellId = "cell" + thisBullet.row + "-" + thisBullet.col
+        let cellId = "cell" + thisBullet.row + "-" + thisBullet.col;
         document.getElementById(cellId).className = "";
 
         // Update row #
         bullets[i].row = bullets[i].row - 1;
 
-        cellId = "cell" + thisBullet.row + "-" + thisBullet.col
+        bulletCollisions()
+
+        cellId = "cell" + thisBullet.row + "-" + thisBullet.col;
         document.getElementById(cellId).className = "bullet";
     }
 }
@@ -148,27 +160,13 @@ function bulletCollisions() {
             bullets.splice(bullets.indexOf(thisBullet), 1);
         }
 
-        if (thisBullet.col >= leftCol && thisBullet.col <= rightCol) {
-            if (thisBullet.row <= frontRow) {
-                bullets.splice(bullets.indexOf(thisBullet), 1);
-                updateGrid();
-                defeatEnemy(thisBullet.row);
-            }
+        if (enemyArray.includes({row: 3, col: 6})) {
+            console.log("true")
+        } else {
+            console.log("false")
         }
     }
 }
 
-function defeatEnemy(row) {
-    for (let col = NUM_COLS - 2; col >= 0; col--) {
-        if (grid[row][col] !== 0) {
-            grid[row][col] = 0;
-        }
-    }
-}
-
-// create invader array
-// go through grid for whatever !== 0 or 1
-// add their row and col to array
-// use includes();
 
 
