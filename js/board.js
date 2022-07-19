@@ -1,16 +1,16 @@
 // Space Invaders Game
 
 // Global Variables
-const NUM_ROWS = 15;
-const NUM_COLS = 9;
+const NUM_ROWS = 9;
+const NUM_COLS = 13;
 
 // Create array to represent a grid
 let grid = createGridArray();
 
 // Add player to the grid array
 let player = {
-    row: 14,
-    col: 4
+    row: 8,
+    col: 6
 }
 
 grid[player.row][player.col] = 1;
@@ -22,21 +22,15 @@ createDivGrid(grid);
 
 function createGridArray() {
     // Create and return a grid array
-    return [ [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 2, 3, 3, 3, 2, 0, 0],
-             [0, 0, 3, 4, 4, 4, 3, 0, 0],
-             [0, 0, 0, 2, 2, 2, 0, 0, 0],
-             [0, 0, 0, 0, 4, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0],
-             [0, 0, 0, 0, 0, 0, 0, 0, 0] ];
+    return [ [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 2, 2, 3, 3, 4, 3, 3, 2, 2, 0, 0],
+             [0, 0, 4, 4, 2, 4, 2, 4, 2, 4, 4, 0, 0],
+             [0, 0, 3, 2, 3, 4, 2, 4, 3, 2, 3, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] ];
 }
 
 function createDivGrid(grid) {
@@ -52,7 +46,7 @@ function createDivGrid(grid) {
             if (grid[row][col] === 1) {
                 divEl.className = "player";
             } else if (grid[row][col] === 2) {
-                divEl.className = "pink";
+                divEl.className = "cyan";
             } else if (grid[row][col] === 3) {
                 divEl.className = "purple";
             } else if (grid[row][col] === 4) {

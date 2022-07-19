@@ -8,7 +8,7 @@ h1 {
 }
 
 #gameboard {
-    width: 450px;
+    width: 650px;
     margin: auto;
 }
 
@@ -24,8 +24,8 @@ h1 {
     background-color: green;
 }
 
-.pink {
-    background-color: pink;
+.cyan {
+    background-color: cyan;
 }
 
 .purple {

@@ -9,21 +9,13 @@ function moveInvaders() {
             shiftLeft();
         }
     } else if (direction === "right") {
-        if (rightCol === 7) {
+        if (rightCol === 11) {
             moveForward();
             direction = "left";
         } else {
             shiftRight();
         }
     }
-
-    // if (count === 5) {
-    //     grid[1] = [0, 0, 0, 4, 3, 4, 0, 0, 0];
-    // } else if (count === 6) {
-    //     grid[1] = [0, 0, 2, 2, 0, 2, 2, 0, 0];
-    // } else if (count === 7) {
-    //     grid[1] = [0, 4, 2, 3, 4, 3, 2, 4, 0];
-    // }
 }
 
 function shiftRight() {
@@ -67,7 +59,7 @@ function updateGrid() {
             } else if (thisBox === 1) {
                 thisId.className = "player";
             } else if (thisBox === 2) {
-                thisId.className = "pink";
+                thisId.className = "cyan";
             } else if (thisBox === 3) {
                 thisId.className = "purple";
             } else if (thisBox === 4) {
@@ -76,3 +68,25 @@ function updateGrid() {
         }
     }
 }
+
+document.addEventListener("keydown", keydownHandler);
+document.addEventListener("keyup", keyupHandler);
+let leftArrowPressed = "false" 
+let rightArrowPressed = "false";
+
+function keydownHandler(e) {
+    if (e.keyCode === 37) {
+        leftArrowPressed = "true";
+    } else if (e.keyCode === 39) {
+        rightArrowPressed = "true";
+    }
+}
+
+function keyupHandler(e) {
+    if (e.keyCode === 37) {
+        leftArrowPressed = "false";
+    } else if (e.keyCode === 39) {
+        rightArrowPressed = "false";
+    }
+}
+
