@@ -65,6 +65,8 @@ function updateGrid() {
                 thisId.className = "purple";
             } else if (thisBox === 4) {
                 thisId.className = "orange";
+            } else if (thisBox === 5) {
+                thisId.className = "bullet";
             }
         }
     }
@@ -130,6 +132,7 @@ function drawBullets() {
         let thisBullet = bullets[i];
         let cellId = "cell" + thisBullet.row + "-" + thisBullet.col
 
+        grid[thisBullet.row][thisBullet.col] = 5;
         document.getElementById(cellId).className = "bullet";
     }
 }
@@ -141,15 +144,18 @@ function moveBullets() {
         let thisBullet = bullets[i];
         let cellId = "cell" + thisBullet.row + "-" + thisBullet.col;
         document.getElementById(cellId).className = "";
+        grid[thisBullet.row][thisBullet.col] = 0;
 
         // Update row #
         bullets[i].row = bullets[i].row - 1;
-        
+
         bulletCollisions()
 
 
         cellId = "cell" + thisBullet.row + "-" + thisBullet.col;
         document.getElementById(cellId).className = "bullet";
+        grid[thisBullet.row][thisBullet.col] = 5;
+
     }
 }
 
@@ -166,12 +172,17 @@ function bulletCollisions() {
             let thisInvader = JSON.stringify(enemyArray[i]);
             let theBullet = JSON.stringify(thisBullet);
             if (thisInvader === theBullet) {
-                console.log("true")
+                defeatEnemy(enemyArray[i].row, enemyArray[i].col);
+                bullets.splice(bullets.indexOf(thisBullet), 1);
+                enemyArray.splice(enemyArray.indexOf(enemyArray[i]), 1);
             }
         }
         
     }
 }
 
+function defeatEnemy(row, col) {
+    grid[row][col] = 0;
+}
 
 
