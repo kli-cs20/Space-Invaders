@@ -45,6 +45,7 @@ function moveForward() {
 
         }
     }
+    frontRow++;
 }
 
 
@@ -141,11 +142,33 @@ function moveBullets() {
 function bulletCollisions() {
     for (let i = 0; i < bullets.length; i++) {
         let thisBullet = bullets[i];
+
+        // Off the screen
         if (thisBullet.row < 0) {
             bullets.splice(bullets.indexOf(thisBullet), 1);
+        }
+
+        if (thisBullet.col >= leftCol && thisBullet.col <= rightCol) {
+            if (thisBullet.row <= frontRow) {
+                bullets.splice(bullets.indexOf(thisBullet), 1);
+                updateGrid();
+                defeatEnemy(thisBullet.row);
+            }
         }
     }
 }
 
+function defeatEnemy(row) {
+    for (let col = NUM_COLS - 2; col >= 0; col--) {
+        if (grid[row][col] !== 0) {
+            grid[row][col] = 0;
+        }
+    }
+}
+
+// create invader array
+// go through grid for whatever !== 0 or 1
+// add their row and col to array
+// use includes();
 
 

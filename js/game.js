@@ -3,6 +3,7 @@
 // Global Variables
 let leftCol = 2;
 let rightCol = 10;
+let frontRow = 3;
 let direction = "right";
 
 
