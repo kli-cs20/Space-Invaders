@@ -9,7 +9,7 @@ function moveInvaders() {
             shiftLeft();
         }
     } else if (direction === "right") {
-        if (rightCol === 11) {
+        if (rightCol === NUM_COLS - 2) {
             moveForward();
             direction = "left";
         } else {
@@ -45,7 +45,8 @@ function moveForward() {
 
         }
     }
-    frontRow++;
+    checkGameOver();
+    frontRow++
 }
 
 
@@ -73,6 +74,7 @@ function updateGrid() {
 }
 
 function recordInvaders() {
+    enemyArray = [];
     for (let r = 0; r < NUM_ROWS - 1; r++) {
         for (let c = 0; c < NUM_COLS; c++) {
             let thisBox = grid[r][c];
@@ -80,6 +82,12 @@ function recordInvaders() {
                 enemyArray.push({row: r, col: c});
             }
         }
+    }
+}
+
+function checkGameOver() {
+    if (frontRow === 7) {
+        alert("Game Over");
     }
 }
 
