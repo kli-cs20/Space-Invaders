@@ -91,6 +91,7 @@ function checkGameOver() {
     }
 }
 
+// Player-Controlled Elements
 document.addEventListener("keydown", movePlayer);
 
 function movePlayer(e) {
