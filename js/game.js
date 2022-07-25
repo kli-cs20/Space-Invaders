@@ -34,6 +34,3 @@ function playGame() {
 
 }
 
-// How to do bullets:
-// -probably easier to grid everything onto canvas
-
